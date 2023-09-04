@@ -1,0 +1,12 @@
+# Folders
+.vscode/**
+.vscode-test/**
+scripts
+themes/_template-color-theme.json
+
+# Files
+.gitignore
+.npmrc
+pnpm-lock.yaml
+tsconfig.json
+turbo.json

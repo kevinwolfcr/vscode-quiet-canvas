@@ -1,0 +1,17 @@
+# Dependencies
+/node_modules
+
+# Misc
+/**/*.log
+/**/.DS_Store
+
+# Artifacts
+/*.vsix
+
+# Generated themes
+/themes/*
+!/themes/_template-color-theme.json
+
+# Turbo
+/.turbo
+.turbo

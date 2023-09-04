@@ -1,0 +1,89 @@
+{
+  "type": "module",
+  "name": "vscode-quiet-canvas",
+  "displayName": "Quiet Canvas",
+  "version": "1.0.0",
+  "description": "Minimal, quiet, and distraction-less theme for VS Code",
+  "icon": "./images/logo.png",
+  "license": "MIT",
+  "publisher": "kevinwolfcr",
+  "author": {
+    "name": "Kevin Wolf",
+    "email": "hi@kevinwolf.cr",
+    "url": "https://kevinwolf.cr"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "Themes",
+    "Dark Theme",
+    "Simple Theme",
+    "Quiet Theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinwolfcr/vscode-quiet-canvas"
+  },
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Quiet Canvas — Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark-color-theme.json"
+      },
+      {
+        "label": "Quiet Canvas — Light",
+        "uiTheme": "vs",
+        "path": "./themes/light-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "setup": "pnpm install && simple-git-hooks install && turbo run build",
+    "build": "jiti ./scripts/build.ts",
+    "lint:format": "prettier --check .",
+    "lint:style": "eslint .",
+    "lint:types": "tsc --noEmit",
+    "clean": "rm -rf .turbo node_modules",
+    "reset": "pnpm run clean && rm -rf pnpm-lock.yaml && pnpm run setup",
+    "vscode:prepublish": "turbo run validate",
+    "publish": "vsce publish",
+    "upgrade-deps": "pnpm update --interactive --recursive --latest",
+    "pre-commit": "nano-staged"
+  },
+  "devDependencies": {
+    "@kevinwolfcr/eslint-config": "1.0.1",
+    "@kevinwolfcr/prettier-config": "1.0.1",
+    "@radix-ui/colors": "2.1.0",
+    "@types/node": "20.5.9",
+    "@types/tinycolor2": "1.4.3",
+    "@vscode/vsce": "2.21.0",
+    "eslint": "8.48.0",
+    "jiti": "1.19.3",
+    "nano-staged": "0.8.0",
+    "prettier": "3.0.3",
+    "simple-git-hooks": "2.9.0",
+    "tinycolor2": "1.6.0",
+    "turbo": "1.10.13",
+    "typescript": "5.2.2"
+  },
+  "prettier": "@kevinwolfcr/prettier-config",
+  "eslintConfig": {
+    "extends": "@kevinwolfcr"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm run pre-commit"
+  },
+  "nano-staged": {
+    "*.{json,md,yaml,yml}": "prettier --write",
+    "*.{js,jsx,ts,tsx,mdx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "packageManager": "pnpm@8.7.1"
+}
